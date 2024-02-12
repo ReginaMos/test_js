@@ -21,7 +21,7 @@
 
 <script>
   function createTree(data, parentId = null, level = 0) {
-    const elements = data.services.filter(item => item.head === parentId).sort((a, b) => a.sorthead - b.sorthead); //создаем массив листьев, отсортированных по сортхед
+    const elements = data.services.filter(item => item.head === parentId).sort((a, b) => a.sorthead - b.sorthead); //создаем массив листьев, отсортированных по sorthead
     const tree = document.getElementById('tree');
 
     elements.forEach(item => {
@@ -30,7 +30,7 @@
       li.style.paddingLeft = `${level * 20}px`;
       tree.appendChild(li);
 
-      if (item.node === 1) {
+      if (item.node === 1) { //узел
         createTree(data, item.id, level + 1);
       } 
       else {
